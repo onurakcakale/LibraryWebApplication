@@ -1,0 +1,71 @@
+﻿@model LibraryWebApplication.Models.books
+
+@{
+    ViewBag.Title = "LendBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="container">
+        <h2 style="padding-top: 50px; padding-bottom: 50px">Ödünç Ver</h2>
+        @using (Html.BeginForm("Save", "Lend", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+         {
+            <table class="table table-bordered">
+                <tr>
+                    <td>Kitap Resmi</td>
+
+                    <td>
+                        <img src="~/Content/img/@Model.book_image" width="250" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Kitap Adı</td>
+
+                    <td>
+                        @Html.DisplayFor(m => m.book_name)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Ad</td>
+
+                    <td>
+                        <input type="text" class="form-control" name="name"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Soyad</td>
+
+                    <td>
+                        <input type="text" class="form-control" name="surname"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Ödünç Verme Tarihi</td>
+
+                    <td>
+                        <input type="date" class="form-control" name="lendDate"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Geri Getirme Tarihi</td>
+
+                    <td>
+                        <input type="date" class="form-control" name="returnDate"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.HiddenFor(m => m.Id)
+                        <input type="submit" value="Kaydet" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+         }
+    </div>
+</div>

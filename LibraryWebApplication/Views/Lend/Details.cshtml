@@ -1,0 +1,80 @@
+﻿@model LibraryWebApplication.Models.LendModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="container">
+        <h2 style="padding-top: 50px; padding-bottom: 50px">Detaylar</h2>
+
+        <div class="card-header" align="right">
+            @Html.ActionLink("Geri Getirdi", "ReturnBook", "Lend", new { @Id = Model.book_id }, new { @class = "btn btn-success mx4 " })
+        </div>
+
+        <table class="table table-bordered" style="margin-top: 50px">
+            <tr>
+                <td>Kitap Resmi</td>
+
+                <td>
+                    <img src="~/Content/img/@Model.book_image" width="250" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Kitap Adı</td>
+
+                <td>
+                    @Html.DisplayFor(m => m.book_name)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Kitap Yazarı</td>
+
+                <td>
+                    @Html.DisplayFor(m => m.book_writer)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Ad</td>
+
+                <td>
+                    @Html.DisplayFor(m => m.name)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Soyad</td>
+
+                <td>
+                    @Html.DisplayFor(m => m.surname)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Ödünç Verme Tarihi</td>
+
+                <td>
+                    @Html.DisplayFor(m => m.lend_date)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Geri Getirme Tarihi</td>
+
+                <td>
+                    @Html.DisplayFor(m => m.return_date)
+                </td>
+            </tr>
+
+            @*<tr>
+                <td>
+                    @Html.HiddenFor(m => m.Id)
+                    <input type="submit" value="Kaydet" class="btn btn-primary" />
+                </td>
+            </tr>*@
+        </table>
+    </div>
+</div>

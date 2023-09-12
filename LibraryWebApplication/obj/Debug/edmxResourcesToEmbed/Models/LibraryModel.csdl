@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="libraryAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="books">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="book_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="book_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="book_writer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="record_state" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="lend" Relationship="Self.FK_lend_books" FromRole="books" ToRole="lend" />
+  </EntityType>
+  <EntityType Name="lend">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="book_id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lend_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="return_date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="books" Relationship="Self.FK_lend_books" FromRole="lend" ToRole="books" />
+  </EntityType>
+  <Association Name="FK_lend_books">
+    <End Role="books" Type="Self.books" Multiplicity="1" />
+    <End Role="lend" Type="Self.lend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="books">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="lend">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="libraryAppEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="books" EntityType="Self.books" />
+    <EntitySet Name="lend" EntityType="Self.lend" />
+    <AssociationSet Name="FK_lend_books" Association="Self.FK_lend_books">
+      <End Role="books" EntitySet="books" />
+      <End Role="lend" EntitySet="lend" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

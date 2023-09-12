@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="libraryAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="books">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="book_image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="book_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="book_writer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="record_state" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="lend">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="book_id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="surname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="lend_date" Type="date" Nullable="false" />
+    <Property Name="return_date" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_lend_books">
+    <End Role="books" Type="Self.books" Multiplicity="1" />
+    <End Role="lend" Type="Self.lend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="books">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="lend">
+        <PropertyRef Name="book_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="libraryAppModelStoreContainer">
+    <EntitySet Name="books" EntityType="Self.books" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lend" EntityType="Self.lend" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_lend_books" Association="Self.FK_lend_books">
+      <End Role="books" EntitySet="books" />
+      <End Role="lend" EntitySet="lend" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

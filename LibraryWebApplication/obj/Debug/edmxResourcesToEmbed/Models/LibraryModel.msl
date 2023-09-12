@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="libraryAppModelStoreContainer" CdmEntityContainer="libraryAppEntities">
+    <EntitySetMapping Name="books">
+      <EntityTypeMapping TypeName="libraryAppModel.books">
+        <MappingFragment StoreEntitySet="books">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="book_image" ColumnName="book_image" />
+          <ScalarProperty Name="book_name" ColumnName="book_name" />
+          <ScalarProperty Name="book_writer" ColumnName="book_writer" />
+          <ScalarProperty Name="record_state" ColumnName="record_state" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lend">
+      <EntityTypeMapping TypeName="libraryAppModel.lend">
+        <MappingFragment StoreEntitySet="lend">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="book_id" ColumnName="book_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="lend_date" ColumnName="lend_date" />
+          <ScalarProperty Name="return_date" ColumnName="return_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,67 @@
+﻿@model LibraryWebApplication.Models.books
+@{
+    ViewBag.Title = "BookForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    field-validation-error {
+        color: red;
+    }
+</style>
+
+<div class="content-wrapper">
+    <div class="container">
+        <h2 style="padding-top: 50px; padding-bottom: 50px">Kitap Ekle</h2>
+        @using (Html.BeginForm("Save", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            <table class="table table-bordered">
+                <tr>
+                    <td>
+                        Kitap Resmi
+                    </td>
+
+                    <td>
+                        @if (Model.book_image != null)
+                         {
+                            <img src="~/Content/img/@Model.book_image" width="250" />
+                         }
+
+                        @Html.TextBoxFor(m => m.imageFile, new { type = "file" })
+                        @if (ViewBag.ErrorImage != null)
+                         {
+                            <span class="field-validation-error" data-valms-for="imageFile" data-valmsg-replace="true">@ViewBag.ErrorImage</span>
+                         }
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Kitap Adı</td>
+
+                    <td>
+                        @Html.TextBoxFor(m => m.book_name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.book_name)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Kitap Yazarı</td>
+
+                    <td>
+                        @Html.TextBoxFor(m => m.book_writer, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.book_writer)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.HiddenFor(m => m.book_image)
+                        @Html.HiddenFor(m => m.Id)
+                        @Html.HiddenFor(m => m.record_state)
+                        <input type="submit" value="Kaydet" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+</div>
