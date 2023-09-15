@@ -8,4 +8,11 @@ Veri tabanında books ve lend adında iki tablo bulunur. Books tablosu kitaplar�
 
 MVC projesinde DBFirst kullanıldığı için veri tabanı model olarak ADO.NET kullanılmıştır. Bu sayede veri tabanındaki modeller projeye aktarılmıştır.
 
-MVC projesinde 2 adet Controller yer almaktadır. HomeController kitaplar üzerindeki işlemleri yapmak için vardır. LendController ise kitaplar üzerindeki ödünç verme işlemlerini yönetmek için vardır.
+MVC projesinde 2 adet Controller yer almaktadır. HomeController kitaplar üzerindeki işlemleri yapmak için vardır. LendController ise kitaplar üzerindeki ödünç verme işlemlerini yönetmek için vardır. <br> <br>
+
+<img src="https://github.com/onurakcakale/LibraryWebApplication/blob/main/screenshots/1.jpg"> <br>
+<img src="https://github.com/onurakcakale/LibraryWebApplication/blob/main/screenshots/2.jpg"> <br>
+<img src="https://github.com/onurakcakale/LibraryWebApplication/blob/main/screenshots/3.jpg"> <br>
+<img src="https://github.com/onurakcakale/LibraryWebApplication/blob/main/screenshots/4.jpg"> <br>
+<img src="https://github.com/onurakcakale/LibraryWebApplication/blob/main/screenshots/5.jpg"> <br>
+<img src="https://github.com/onurakcakale/LibraryWebApplication/blob/main/screenshots/6.jpg"> <br>
